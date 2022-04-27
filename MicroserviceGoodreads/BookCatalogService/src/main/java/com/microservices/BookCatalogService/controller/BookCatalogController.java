@@ -36,20 +36,10 @@ public class BookCatalogController {
 		bookCatalog.setUname(u.getUname());
 		bookCatalog.setEmail(u.getEmail());
 		
-//		u.getRatings().stream().map(rating -> {
-//			BookInformation bookInfo = restTemplate.getForObject("http://localhost:8082/books/" + rating.getIsbn(), BookInformation.class);
-//			
-//			bookRating.setAuthor(bookInfo.getAuthor());
-//			bookRating.setDescription(bookInfo.getDescription());
-//			bookRating.setIsbn(bookInfo.getIsbn());
-//			bookRating.setName(bookInfo.getName());
-//			bookRating.setRating(rating.getRatings());
-//			
-//			bookRatings.add(bookRating);
-//		});
-		
 		for(Ratings rating : u.getRatings()) {
+			
 			BookInformation bookInfo = restTemplate.getForObject("http://localhost:8082/books/" + rating.getIsbn(), BookInformation.class);
+			
 			
 			bookRating.setAuthor(bookInfo.getAuthor());
 			bookRating.setDescription(bookInfo.getDescription());
